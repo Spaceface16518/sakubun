@@ -1,8 +1,6 @@
-use std::{collections::HashMap, mem::MaybeUninit, str::from_utf8};
+use std::{collections::HashMap, str::from_utf8};
 
 pub struct Index<'s> {
-    /// bytes that source sentences come from
-    source: &'s [u8],
     // TODO: since the csv file is constant, use smallvec and experimentally
     // derive optimal value for stack storage.
     graph: HashMap<char, Vec<&'s str>>,
@@ -25,7 +23,7 @@ impl<'s> Index<'s> {
             }
         }
 
-        Index { source, graph }
+        Index { graph }
     }
 
     // find all sentences associated with this kanji
