@@ -27,6 +27,7 @@ use std::{
 };
 
 mod actions;
+mod index;
 
 use actions::*;
 
